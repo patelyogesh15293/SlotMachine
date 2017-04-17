@@ -76,6 +76,7 @@
             this.BetFiftyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BetFiftyPictureBox.TabIndex = 7;
             this.BetFiftyPictureBox.TabStop = false;
+            this.BetFiftyPictureBox.Click += new System.EventHandler(this.BetFiftyPictureBox_Click);
             // 
             // ReelOnePictureBox
             // 
@@ -165,6 +166,7 @@
             this.BetFiveHundredPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BetFiveHundredPictureBox.TabIndex = 18;
             this.BetFiveHundredPictureBox.TabStop = false;
+            this.BetFiveHundredPictureBox.Click += new System.EventHandler(this.BetFiveHundredPictureBox_Click);
             // 
             // BetHundredPictureBox
             // 
@@ -175,6 +177,7 @@
             this.BetHundredPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BetHundredPictureBox.TabIndex = 19;
             this.BetHundredPictureBox.TabStop = false;
+            this.BetHundredPictureBox.Click += new System.EventHandler(this.BetHundredPictureBox_Click);
             // 
             // ResetPictureBox
             // 
@@ -196,6 +199,7 @@
             this.PowerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PowerPictureBox.TabIndex = 20;
             this.PowerPictureBox.TabStop = false;
+            this.PowerPictureBox.Click += new System.EventHandler(this.PowerPictureBox_Click);
             // 
             // SlotMachineForm
             // 

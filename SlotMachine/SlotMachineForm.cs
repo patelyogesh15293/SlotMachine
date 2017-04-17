@@ -79,20 +79,29 @@ namespace SlotMachine
         /* Utility function to reset the player stats */
         private void resetAll()
         {
-            playerMoney = 1000;
-            winnings = 0;
-            jackpot = 5000;
-            turn = 0;
-            playerBet = 0;
-            winNumber = 0;
-            lossNumber = 0;
-            winRatio = 0.0f;
+            // IF conditon for 
+            if (MessageBox.Show("Are You Sure?", "Are you sure you want to reset the game? your stats will be wiped out.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                playerMoney = 1000;
+                winnings = 0;
+                jackpot = 5000;
+                turn = 0;
+                playerBet = 0;
+                winNumber = 0;
+                lossNumber = 0;
+                winRatio = 0.0f;
 
-            JackPotLabel.Text = jackpot.ToString();
-            WinnerPaidLabel.Text = " ";
-            ReelOnePictureBox.Image = Properties.Resources.blank;
-            ReelTwoPictureBox.Image = Properties.Resources.blank;
-            ReelThreePictureBox.Image = Properties.Resources.blank;
+                JackPotLabel.Text = jackpot.ToString();
+                WinnerPaidLabel.Text = " ";
+                ReelOnePictureBox.Image = Properties.Resources.cherry;
+                ReelTwoPictureBox.Image = Properties.Resources.bar;
+                ReelThreePictureBox.Image = Properties.Resources.orange;
+
+                TotalCreditsLabel.Text = playerMoney.ToString();
+                BetLabel.Text = "0";
+
+            }
+           
         }
 
         /* Check to see if the player won the jackpot */
@@ -291,7 +300,6 @@ namespace SlotMachine
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
             playerBet = 0;
-            winnings = 0;
             WinnerPaidLabel.Text = winnings.ToString();
             playerBet = Convert.ToInt32(BetLabel.Text);
 
@@ -337,7 +345,7 @@ namespace SlotMachine
                     MessageBox.Show("Please enter a valid bet amount");
                 }
             }
-            WinnerPaidLabel.Text = "0";
+            
         }
 
         /// <summary>
@@ -393,7 +401,47 @@ namespace SlotMachine
         /// <param name="e"></param>
         private void ResetPictureBox_Click(object sender, EventArgs e)
         {
+            resetAll();
+        }
 
+        /// <summary>
+        /// Power button clicked event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PowerPictureBox_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Bet button clicked event handler 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BetFiftyPictureBox_Click(object sender, EventArgs e)
+        {
+            checkCredit(50);
+        }
+
+        /// <summary>
+        /// Bet button clicked event handler 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BetHundredPictureBox_Click(object sender, EventArgs e)
+        {
+            checkCredit(100);
+        }
+
+        /// <summary>
+        /// Bet button clicked event handler 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BetFiveHundredPictureBox_Click(object sender, EventArgs e)
+        {
+            checkCredit(500);
         }
     }
 
