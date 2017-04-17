@@ -185,6 +185,7 @@
             this.ResetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ResetPictureBox.TabIndex = 21;
             this.ResetPictureBox.TabStop = false;
+            this.ResetPictureBox.Click += new System.EventHandler(this.ResetPictureBox_Click);
             // 
             // PowerPictureBox
             // 
@@ -222,6 +223,7 @@
             this.Name = "SlotMachineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Slot Machine";
+            this.Load += new System.EventHandler(this.SlotMachineForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SpinPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetFiftyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelOnePictureBox)).EndInit();
