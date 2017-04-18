@@ -117,7 +117,7 @@
             // 
             this.JackPotLabel.BackColor = System.Drawing.Color.Black;
             this.JackPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JackPotLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.JackPotLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.JackPotLabel.Location = new System.Drawing.Point(182, 164);
             this.JackPotLabel.Name = "JackPotLabel";
             this.JackPotLabel.Size = new System.Drawing.Size(101, 21);
@@ -227,6 +227,7 @@
             this.Name = "SlotMachineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Slot Machine";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SlotMachineForm_FormClosed);
             this.Load += new System.EventHandler(this.SlotMachineForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SpinPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BetFiftyPictureBox)).EndInit();

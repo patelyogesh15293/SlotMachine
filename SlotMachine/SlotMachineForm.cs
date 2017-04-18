@@ -69,8 +69,8 @@ namespace SlotMachine
             playerBet = 0;
             stats += (TotalCreditsLabel.Text = playerMoney + "\n");
             WinnerPaidLabel.Text = winnings.ToString();
-            _runningJackpot = jackpot + (playerBet / 10);
-            JackPotLabel.Text = _runningJackpot.ToString();
+            //_runningJackpot = jackpot + (playerBet / 10);
+            //JackPotLabel.Text = _runningJackpot.ToString();
         }
 
         /* Utility function to reset all fruit tallies*/
@@ -101,7 +101,6 @@ namespace SlotMachine
                 lossNumber = 0;
                 winRatio = 0.0f;
 
-                JackPotLabel.Text = jackpot.ToString();
                 WinnerPaidLabel.Text = " ";
                 ReelOnePictureBox.Image = Properties.Resources.cherry;
                 ReelTwoPictureBox.Image = Properties.Resources.bar;
@@ -125,8 +124,9 @@ namespace SlotMachine
                 MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
                 playerMoney += jackpot;
                 jackpot = 5000;
-                JackPotLabel.Text = jackpot.ToString();
+                JackPotLabel.Text = jackpot.ToString(); // Display jackpot value to label
             }
+            
         }
 
         /* Utility function to show a win message and increase player money */
@@ -312,7 +312,8 @@ namespace SlotMachine
             playerBet = 0;
             WinnerPaidLabel.Text = winnings.ToString();
             playerBet = Convert.ToInt32(BetLabel.Text);
-
+            JackPotLabel.Text = "";
+  
             // IF condition for check user bet amount
             if (playerBet == 0)
             {
@@ -347,7 +348,6 @@ namespace SlotMachine
                     turn++;
                     TotalCreditsLabel.Text = playerMoney.ToString();
                     BetLabel.Text = "0";
-                    playerBet = 0;
                     showPlayerStats();
                 }
                 else
@@ -395,6 +395,7 @@ namespace SlotMachine
         /// <param name="e"></param>
         private void SlotMachineForm_Load(object sender, EventArgs e)
         {
+            // Set default value when form load 
             TotalCreditsLabel.Text = playerMoney.ToString();
             BetLabel.Text = "0";
             WinnerPaidLabel.Text = "0";
@@ -402,7 +403,7 @@ namespace SlotMachine
             ReelTwoPictureBox.Image = Properties.Resources.bar;
             ReelThreePictureBox.Image = Properties.Resources.orange;
 
-            playSimpleSound();
+            playSimpleSound(); // Call function 
 
         }
 
@@ -423,7 +424,18 @@ namespace SlotMachine
         /// <param name="e"></param>
         private void PowerPictureBox_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit", "Exit", MessageBoxButtons.YesNo);
+            
+            // IF result is yes user may exit from application
+            if(result == DialogResult.Yes)
+            {
+                MessageBox.Show("Thank you for playing!", "Thank You");
+                Application.Exit();
+            }
+            else
+            {
+                // User will stay on app
+            }
         }
 
         /// <summary>
@@ -455,11 +467,24 @@ namespace SlotMachine
         {
             checkCredit(500);
         }
+        /// <summary>
+        /// Function for play wav audio file 
+        /// </summary>
         private void playSimpleSound()
         {
+            // make a new player object add set with value 
             player = new System.Media.SoundPlayer(SlotMachine.Properties.Resources.Slot_Machine_Sound_Effects_converted);
-            player.Load();
-            player.PlayLooping();
+            player.Load(); // Load that sound file
+            player.PlayLooping(); // Play wave file in loop
+        }
+        /// <summary>
+        /// Form close event handler 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SlotMachineForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 
