@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Appllication Name:   Slot Machine
+// Author's Name:       Yogeshkumar Patel
+// Student ID:          200334362
+// Date:                April 15, 2017
+// Description:         Slot machine provide user to play with starting credit and 
+//                      also can bet. There is some jackpot for use to win.
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +21,8 @@ namespace SlotMachine
 {
     public partial class SlotMachineForm : Form
     {
+        System.Media.SoundPlayer player;
+
         private int playerMoney = 1000;
         private int winnings = 0;
         private int jackpot = 5000;
@@ -114,7 +124,7 @@ namespace SlotMachine
             {
                 MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
                 playerMoney += jackpot;
-                jackpot = 1000;
+                jackpot = 5000;
                 JackPotLabel.Text = jackpot.ToString();
             }
         }
@@ -385,13 +395,15 @@ namespace SlotMachine
         /// <param name="e"></param>
         private void SlotMachineForm_Load(object sender, EventArgs e)
         {
-            JackPotLabel.Text = jackpot.ToString();
             TotalCreditsLabel.Text = playerMoney.ToString();
             BetLabel.Text = "0";
             WinnerPaidLabel.Text = "0";
             ReelOnePictureBox.Image = Properties.Resources.cherry;
             ReelTwoPictureBox.Image = Properties.Resources.bar;
             ReelThreePictureBox.Image = Properties.Resources.orange;
+
+            playSimpleSound();
+
         }
 
         /// <summary>
@@ -442,6 +454,12 @@ namespace SlotMachine
         private void BetFiveHundredPictureBox_Click(object sender, EventArgs e)
         {
             checkCredit(500);
+        }
+        private void playSimpleSound()
+        {
+            player = new System.Media.SoundPlayer(SlotMachine.Properties.Resources.Slot_Machine_Sound_Effects_converted);
+            player.Load();
+            player.PlayLooping();
         }
     }
 

@@ -8,6 +8,11 @@ namespace SlotMachine
 {
     static class Program
     {
+        // Declare public static form
+        public static SplashForm mySplashForm;
+        // Declare public static form
+        public static SlotMachineForm mySlotMachineForm;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +21,11 @@ namespace SlotMachine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SlotMachineForm());
+            // Initialize splashform
+            Program.mySplashForm = new SplashForm();
+            // Initialize selection form
+            Program.mySlotMachineForm = new SlotMachineForm();
+            Application.Run(Program.mySplashForm);
         }
     }
 }
